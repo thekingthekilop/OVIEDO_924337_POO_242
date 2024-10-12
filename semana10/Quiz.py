@@ -1,51 +1,45 @@
-class Coche:
-    def __init__(self, marca, modelo, año):
-        self.marca = marca
-        self.modelo = modelo
-        self.año = año
+class Car:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
 
     def __str__(self):
-        return f"Coche: {self.marca} {self.modelo}, Año: {self.año}"
+        return f"Car: {self.brand} {self.model}, Year: {self.year}"
 
     def __repr__(self):
-        return f"Coche(marca='{self.marca}', modelo='{self.modelo}', año={self.año})"
+        return f"Car(brand='{self.brand}', model='{self.model}', year={self.year})"
 
-mi_coche = Coche("Toyota", "Corolla", 2022)
+my_car = Car("Toyota", "Corolla", 2022)
 
-print(str(mi_coche))
-print(repr(mi_coche)) 
+print(str(my_car))
+print(repr(my_car))
 
 
+class BankAccount:
+    def __init__(self, holder):
+        self.holder = holder
+        self.__balance = 0
 
-class CuentaBancaria:
-
-    def __init__(self, titular):
-        self.titular = titular
-        self.__saldo = 0
-        
-    def depositar(self, monto):
-        if monto > 0:
-            self.__saldo += monto
-            print(f"Depósito de {monto} realizado con éxito.")
-        
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Deposit of {amount} completed successfully.")
         else:
-            print("El monto a depositar debe ser positivo.")
+            print("The deposit amount must be positive.")
 
-
-
-    def retirar(self, monto):
-        if 0 < monto <= self.__saldo:
-            self.__saldo -= monto
-            print(f"Retiro de {monto} realizado con éxito.")
-            
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            print(f"Withdrawal of {amount} completed successfully.")
         else:
-            print("Fondos insuficientes o monto inválido.")
-            
-    def mostrar_saldo(self):
-        return f"El saldo actual es: {self.__saldo}"
+            print("Insufficient funds or invalid amount.")
 
-cuenta = CuentaBancaria("Carlos")
-cuenta.depositar(1000)
-cuenta.retirar(500)
+    def show_balance(self):
+        return f"The current balance is: {self.__balance}"
 
-print(cuenta.mostrar_saldo())
+account = BankAccount("Carlos")
+account.deposit(1000)
+account.withdraw(500)
+
+print(account.show_balance())
