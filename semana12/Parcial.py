@@ -5,7 +5,6 @@ class Libro:
         self.__isbn = isbn
         self.__disponible = True
 
-    # Métodos para encapsulamiento
     def obtener_titulo(self):
         return self.__titulo
 
@@ -21,13 +20,11 @@ class Libro:
     def esta_disponible(self):
         return self.__disponible
 
-    # Métodos str y repr
     def __str__(self):
         return f"{self.__titulo} de {self.__autor} (ISBN: {self.__isbn})"
 
     def __repr__(self):
         return f"Libro('{self.__titulo}', '{self.__autor}', '{self.__isbn}')"
-
 
 class Miembro:
     def __init__(self, nombre, identificacion):
@@ -35,7 +32,6 @@ class Miembro:
         self.__identificacion = identificacion
         self.__libros_prestados = []
 
-    # Métodos para gestionar préstamos
     def agregar_libro(self, libro):
         if libro.esta_disponible():
             libro.cambiar_disponibilidad(False)
@@ -53,13 +49,11 @@ class Miembro:
     def obtener_prestamos(self):
         return self.__libros_prestados
 
-    # Métodos str y repr
     def __str__(self):
         return f"Miembro: {self.__nombre} (ID: {self.__identificacion})"
 
     def __repr__(self):
         return f"Miembro('{self.__nombre}', '{self.__identificacion}')"
-
 
 class MiembroVIP(Miembro):
     def __init__(self, nombre, identificacion, limite_prestamos=10):
@@ -71,37 +65,28 @@ class MiembroVIP(Miembro):
             return super().agregar_libro(libro)
         return False
 
-    # Métodos str y repr
     def __str__(self):
         return f"Miembro VIP: {self._Miembro__nombre} (ID: {self._Miembro__identificacion}, Límite: {self.__limite_prestamos})"
 
     def __repr__(self):
         return f"MiembroVIP('{self._Miembro__nombre}', '{self._Miembro__identificacion}', Límite: {self.__limite_prestamos})"
 
-
-# Método de prueba
 def prueba_biblioteca():
     libro1 = Libro("1984", "George Orwell", "123456789")
     libro2 = Libro("Cien Años de Soledad", "Gabriel García Márquez", "987654321")
     miembro = Miembro("Juan Pérez", "001")
     miembro_vip = MiembroVIP("María González", "002")
 
-    # Prueba de préstamo y devolución
-    resultados = []
-    resultados.append(str(miembro))
+    print(miembro)
     if miembro.agregar_libro(libro1):
-        resultados.append(f"{miembro} ha prestado {libro1}")
+        print(f"{miembro} ha prestado {libro1}")
     if miembro.devolver_libro(libro1):
-        resultados.append(f"{miembro} ha devuelto {libro1}")
+        print(f"{miembro} ha devuelto {libro1}")
 
-    # Prueba con MiembroVIP
-    resultados.append(str(miembro_vip))
+    print(miembro_vip)
     if miembro_vip.agregar_libro(libro2):
-        resultados.append(f"{miembro_vip} ha prestado {libro2}")
+        print(f"{miembro_vip} ha prestado {libro2}")
     if miembro_vip.devolver_libro(libro2):
-        resultados.append(f"{miembro_vip} ha devuelto {libro2}")
-    
-    return resultados
+        print(f"{miembro_vip} ha devuelto {libro2}")
 
-# Ejecutar prueba y mostrar resultados
 prueba_biblioteca()
