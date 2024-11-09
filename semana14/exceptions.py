@@ -13,4 +13,9 @@ while True:
     except ZeroDivisionError:
         print("Division por cero no es permitida")
 
-    except Exception
+    except Exception as e:
+        print(f"Se produjo un error del tipo : {e}")
+
+    finally:
+        print("Programa Terminado")
+        
